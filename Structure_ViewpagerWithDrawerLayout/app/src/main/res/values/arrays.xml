@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="main_tabs">
+        <item>@string/main_tab_home</item>
+        <item>@string/main_tab_issue</item>
+        <item>@string/main_tab_live</item>
+        <item>@string/main_tab_video</item>
+        <item>@string/main_tab_photo</item>
+    </string-array>
+
+    <string-array name="home_tabs">
+        <item>@string/home_tab_topic</item>
+        <item>@string/home_tab_personal</item>
+        <item>@string/home_tab_setting</item>
+    </string-array>
+
+    <string-array name="navigation_items">
+        <item>@string/navigation_item_collect</item>
+        <item>@string/navigation_item_issue</item>
+    </string-array>
+</resources>

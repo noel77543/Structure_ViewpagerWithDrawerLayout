@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--main hint-->
+    <color name="main_hint">#5f6d79</color>
+
+    <!--main tabs-->
+    <color name="main_tab_non_select">#788b9b</color>
+    <color name="main_tab_selected">#ffffff</color>
+    <color name="main_tab_indicator">#de650d</color>
+    <color name="main_tab_bg">#1e2023</color>
+
+</resources>
