@@ -29,7 +29,9 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.navigation.adapter.N
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.navigation.collect_point.CollectActivity;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.photo.PhotoContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video.VideoContainerFragment;
-
+/**
+ * Created by noel on 2018/6/10.
+ */
 public class MainActivity extends FragmentActivity implements NavigationAdapter.onItemClickListener, TabHost.OnTabChangeListener {
 
     @BindView(R.id.text_view)
