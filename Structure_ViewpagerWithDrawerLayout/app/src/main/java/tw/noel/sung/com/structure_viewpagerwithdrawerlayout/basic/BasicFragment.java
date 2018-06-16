@@ -23,11 +23,10 @@ public abstract class BasicFragment extends Fragment {
             activity = (MainActivity) context;
         }
     }
-    //-------------
-
+    //----------------------
 
     /**
-     * 第一層 箱子 container用
+     * 第一層 箱子 container用 無bundle
      */
     public void replaceBasicFragment(int layoutId, Fragment fragment, boolean addToBackStack) {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
@@ -38,10 +37,9 @@ public abstract class BasicFragment extends Fragment {
         transaction.commit();
         getChildFragmentManager().executePendingTransactions();
     }
-
-
+    //----------------------
     /**
-     * 第一層 箱子 有 bundle
+     * 第一層 箱子container用 有 bundle
      */
     public void replaceBasicFragment(int layoutId, Fragment fragment, boolean addToBackStack, Bundle bundle) {
         fragment.setArguments(bundle);
@@ -75,7 +73,7 @@ public abstract class BasicFragment extends Fragment {
      * 第二層以後用
      * 有bundle
      */
-    public void replaceBasicFragment3(int layoutId, Fragment fragment, boolean addToBackStack, Bundle bundle) {
+    public void replaceBasicFragment2(int layoutId, Fragment fragment, boolean addToBackStack, Bundle bundle) {
         fragment.setArguments(bundle);
 
         FragmentTransaction transaction = getParentFragment().getChildFragmentManager().beginTransaction();
@@ -89,6 +87,10 @@ public abstract class BasicFragment extends Fragment {
 
     //-------------
 
+    /***
+     * 返回事件
+     * @return
+     */
     public boolean popFragment() {
         boolean isPop = false;
         if (getChildFragmentManager().getBackStackEntryCount() > 0) {
@@ -103,10 +105,17 @@ public abstract class BasicFragment extends Fragment {
     }
 
     //------------------------------
-    // todo 以下 inner fragment 用
-    //------------------------------
-    // 替換inner的container為外層的用  無bundle
-    public void replaceInnerFragment(int layoutId, Fragment fragment, boolean addToBackStack) {
+
+
+    // todo 以下 viewpager中 fragment 若要替換整個ViewPager顯示區塊時使用
+
+    /***
+     * 替換inner的container為外層的用  無bundle
+     * @param layoutId
+     * @param fragment
+     * @param addToBackStack
+     */
+    public void replaceParentFragment(int layoutId, Fragment fragment, boolean addToBackStack) {
 
         FragmentTransaction transaction = getParentFragment().getParentFragment().getChildFragmentManager().beginTransaction();
         if (addToBackStack) {
@@ -118,8 +127,15 @@ public abstract class BasicFragment extends Fragment {
     }
 
     //------------------------------
-    // 替換inner的container為外層的用  有bundle
-    public void replaceInnerFragment(int layoutId, Fragment fragment, boolean addToBackStack, Bundle bundle) {
+
+    /***
+     * 替換inner的container為外層的用  有bundle
+     * @param layoutId
+     * @param fragment
+     * @param addToBackStack
+     * @param bundle
+     */
+    public void replaceParentFragment(int layoutId, Fragment fragment, boolean addToBackStack, Bundle bundle) {
         fragment.setArguments(bundle);
         FragmentTransaction transaction = getParentFragment().getParentFragment().getChildFragmentManager().beginTransaction();
         if (addToBackStack) {

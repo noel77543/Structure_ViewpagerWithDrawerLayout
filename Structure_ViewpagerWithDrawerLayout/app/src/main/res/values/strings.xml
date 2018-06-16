@@ -12,6 +12,12 @@
     <string name="home_tab_personal">個人</string>
     <string name="home_tab_setting">設定</string>
 
+    <!--video-->
+    <string name="video_tab_hot">熱門</string>
+    <string name="video_tab_funny">搞笑</string>
+    <string name="video_tab_others">其他</string>
+
+
     <!--navigation-->
     <string name="navigation_item_collect">集點換獎品</string>
     <string name="navigation_item_issue">議題</string>
@@ -23,4 +29,9 @@
 
     <!--collect point-->
     <string name="collect_point_title">集點活動</string>
+
+
+
+    <!--personal detail-->
+    <string name="personal_detail_title">個人詳細頁</string>
 </resources>

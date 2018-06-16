@@ -19,4 +19,10 @@
         <item>@string/navigation_item_collect</item>
         <item>@string/navigation_item_issue</item>
     </string-array>
+
+    <string-array name="video_tabs">
+        <item>@string/video_tab_hot</item>
+        <item>@string/video_tab_funny</item>
+        <item>@string/video_tab_others</item>
+    </string-array>
 </resources>

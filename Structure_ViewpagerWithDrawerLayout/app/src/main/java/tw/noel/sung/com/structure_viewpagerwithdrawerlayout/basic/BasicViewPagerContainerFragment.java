@@ -33,11 +33,15 @@ public abstract class BasicViewPagerContainerFragment extends BasicFragment {
      */
     private FrameLayout getFrameLayout() {
         frameLayout = new FrameLayout(activity);
-        frameLayout.setId(R.id.home_pager_id);
+        frameLayout.setId(getFrameLayoutId());
         frameLayout.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return frameLayout;
     }
 
+    /***
+     * getId
+     */
+    public abstract int getFrameLayoutId();
 
     // ---------------------------------------------------
     @Override

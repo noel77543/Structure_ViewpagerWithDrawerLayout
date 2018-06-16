@@ -12,4 +12,8 @@ public class SettingViewPagerContainerFragment extends BasicViewPagerContainerFr
     public void init() {
         replaceBasicFragment(R.id.home_pager_id, new SettingFragment(), false);
     }
+    @Override
+    public int getFrameLayoutId() {
+        return R.id.home_pager_id;
+    }
 }

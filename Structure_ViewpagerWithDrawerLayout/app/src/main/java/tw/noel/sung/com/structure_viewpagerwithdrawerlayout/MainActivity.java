@@ -29,6 +29,7 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.navigation.adapter.N
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.navigation.collect_point.CollectActivity;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.photo.PhotoContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video.VideoContainerFragment;
+
 /**
  * Created by noel on 2018/6/10.
  */
@@ -74,7 +75,7 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
      */
     private void initTabs() {
         tabNames = Arrays.asList(getResources().getStringArray(R.array.main_tabs));
-        int[] tabImages = new int[]{R.drawable.ic_tab_home, R.drawable.ic_tab_issue, R.drawable.ic_tab_live, R.drawable.ic_tab_video, R.drawable.ic_tab_photo};
+        int[] tabImages = new int[]{R.drawable.selector_main_tab_home, R.drawable.selector_main_tab_issue, R.drawable.selector_main_tab_live, R.drawable.selector_main_tab_video, R.drawable.selector_main_tab_photo};
         Class[] classes = new Class[]{HomeContainerFragment.class, IssueContainerFragment.class, LiveContainerFragment.class, VideoContainerFragment.class, PhotoContainerFragment.class};
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         for (int i = 0; i < tabNames.size(); i++) {
@@ -146,10 +147,6 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
         TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
         tab.setImageResource(imgRes);
         tvTitle.setText(title);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, 130);
-        layoutParams.setMargins(3, 3, 3, 3);
-        layoutParams.weight = 1;
-        view.setLayoutParams(layoutParams);
         return view;
     }
 

@@ -12,4 +12,8 @@ public class PersonalViewPagerContainerFragment extends BasicViewPagerContainerF
     public void init() {
         replaceBasicFragment(R.id.home_pager_id, new PersonalFragment(), false);
     }
+    @Override
+    public int getFrameLayoutId() {
+        return R.id.home_pager_id;
+    }
 }

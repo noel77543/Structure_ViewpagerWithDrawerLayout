@@ -3,13 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@color/main_tab_bg"
     android:layout_height="match_parent">
-    <TextView
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/main_tab_issue"
-        android:id="@+id/text_view"
-        android:textSize="60sp"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        />
+        android:layout_height="match_parent" />
 </LinearLayout>

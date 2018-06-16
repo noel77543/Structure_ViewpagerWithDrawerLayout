@@ -12,4 +12,8 @@ public class TopicViewPagerContainerFragment extends BasicViewPagerContainerFrag
     public void init() {
         replaceBasicFragment(R.id.home_pager_id, new TopicFragment(), false);
     }
+    @Override
+    public int getFrameLayoutId() {
+        return R.id.home_pager_id;
+    }
 }
