@@ -26,17 +26,18 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue.detail.IssueDe
  * Created by noel on 2018/6/9.
  */
 
-public class HomeFragment extends BasicFragment{
+public class HomeFragment extends BasicFragment {
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
     @BindView(R.id.view_pager)
-    ViewPager viewPager;
+    public ViewPager viewPager;
 
     private View view;
     private HomeAdapter homeAdapter;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private String[] tabNames;
     private int[] colors;
+
     //-----------
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,19 +65,22 @@ public class HomeFragment extends BasicFragment{
     }
 
 
-
     //-------------
 
     /***
      *  初始化 tab
      */
     private void initTabs() {
+        TopicViewPagerContainerFragment topicViewPagerContainerFragment = new TopicViewPagerContainerFragment();
+        PersonalViewPagerContainerFragment personalViewPagerContainerFragment = new PersonalViewPagerContainerFragment();
+        SettingViewPagerContainerFragment settingViewPagerContainerFragment = new SettingViewPagerContainerFragment();
+
         tabNames = getResources().getStringArray(R.array.home_tabs);
         colors = new int[]{R.color.main_tab_non_select, R.color.main_tab_selected, R.color.main_tab_indicator, R.color.main_tab_bg};
         fragments = new ArrayList<>();
-        fragments.add(new TopicViewPagerContainerFragment());
-        fragments.add(new PersonalViewPagerContainerFragment());
-        fragments.add(new SettingViewPagerContainerFragment());
+        fragments.add(topicViewPagerContainerFragment);
+        fragments.add(personalViewPagerContainerFragment);
+        fragments.add(settingViewPagerContainerFragment);
         homeAdapter = new HomeAdapter(getFragmentManager(), fragments, tabNames);
 
         addTabs(tabNames, colors, TabLayout.MODE_FIXED);

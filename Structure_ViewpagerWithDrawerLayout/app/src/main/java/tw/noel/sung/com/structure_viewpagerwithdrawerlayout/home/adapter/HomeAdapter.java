@@ -32,6 +32,7 @@ public class HomeAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         return pageList.get(position);
     }
+
     //-------
 
     @Override

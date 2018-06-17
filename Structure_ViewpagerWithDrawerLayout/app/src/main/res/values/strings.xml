@@ -34,4 +34,5 @@
 
     <!--personal detail-->
     <string name="personal_detail_title">個人詳細頁</string>
+    <string name="personal_detail_text">%1$s - %2$d</string>
 </resources>

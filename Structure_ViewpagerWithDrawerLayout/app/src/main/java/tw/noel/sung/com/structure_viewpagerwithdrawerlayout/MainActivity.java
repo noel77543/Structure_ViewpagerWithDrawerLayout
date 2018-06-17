@@ -3,11 +3,14 @@ package tw.noel.sung.com.structure_viewpagerwithdrawerlayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,7 +25,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicViewPagerContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.HomeContainerFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.HomeFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.PersonalFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue.IssueContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.live.LiveContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.navigation.adapter.NavigationAdapter;
@@ -44,7 +50,8 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
-    private List<String> tabNames;
+    //MainActivity
+    private List<String> mainTabNames;
     private String[] navigationItems;
     private NavigationAdapter navigationAdapter;
 
@@ -74,15 +81,15 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
      *  初始化tabs
      */
     private void initTabs() {
-        tabNames = Arrays.asList(getResources().getStringArray(R.array.main_tabs));
+        mainTabNames = Arrays.asList(getResources().getStringArray(R.array.main_tabs));
         int[] tabImages = new int[]{R.drawable.selector_main_tab_home, R.drawable.selector_main_tab_issue, R.drawable.selector_main_tab_live, R.drawable.selector_main_tab_video, R.drawable.selector_main_tab_photo};
         Class[] classes = new Class[]{HomeContainerFragment.class, IssueContainerFragment.class, LiveContainerFragment.class, VideoContainerFragment.class, PhotoContainerFragment.class};
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
-        for (int i = 0; i < tabNames.size(); i++) {
-            tabHost.addTab(tabHost.newTabSpec(tabNames.get(i)).setIndicator(getTabView(tabImages[i], tabNames.get(i))), classes[i], null);
+        for (int i = 0; i < mainTabNames.size(); i++) {
+            tabHost.addTab(tabHost.newTabSpec(mainTabNames.get(i)).setIndicator(getTabView(tabImages[i], mainTabNames.get(i))), classes[i], null);
         }
 
-        textView.setText(tabNames.get(0));
+        textView.setText(mainTabNames.get(0));
         tabHost.setOnTabChangedListener(this);
     }
 
@@ -94,7 +101,7 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
 
     @Override
     public void onTabChanged(String tabId) {
-        textView.setText(tabNames.get(tabNames.indexOf(tabId)));
+        textView.setText(mainTabNames.get(mainTabNames.indexOf(tabId)));
     }
 
     //-----------------
@@ -171,16 +178,17 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
     //----------------
 
     /**
-     * 檢查tag
+     * 是否為MainActivity的Tag
      */
-    private boolean isTabTag(String tabName) {
-        for (int i = 0; i < tabNames.size(); i++) {
-            if (tabName.equals(tabNames.get(i))) {
+    private boolean isMainTabTag(String tabName) {
+        for (int i = 0; i < mainTabNames.size(); i++) {
+            if (tabName.equals(mainTabNames.get(i))) {
                 return true;
             }
         }
         return false;
     }
+
 
     //----------------------
 
@@ -190,7 +198,26 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
     private void backToBeforePage() {
         boolean isPopFragment = false;
         String currentTabTag = tabHost.getCurrentTabTag();
-        if (isTabTag(currentTabTag)) {
+
+
+//        if (currentTabTag.equals("首頁")) {
+//
+//            if (((getSupportFragmentManager().findFragmentByTag(currentTabTag))) instanceof HomeContainerFragment) {
+//                Log.e("yes", "yes");
+//                if(     ((getSupportFragmentManager().findFragmentByTag(currentTabTag))).getChildFragmentManager().findFragmentByTag(null) instanceof  HomeFragment){
+//                    Log.e("yesyes", "yesyes");
+//                    ViewPager homeViewPager = ((HomeFragment)(getSupportFragmentManager().findFragmentByTag(currentTabTag))).viewPager;
+//                    if(   ((FragmentPagerAdapter) homeViewPager.getAdapter()).getItem(homeViewPager.getCurrentItem())  instanceof PersonalFragment){
+//                        Log.e("yesyesyes", "yesyesyes");
+//                    }
+//                }
+//            }
+            //            ViewPager homeViewPager =  ((HomeFragment)((getSupportFragmentManager().findFragmentByTag(currentTabTag))).getFragmentManager().findFragmentByTag("個人")).viewPager;
+//            ((BasicFragment) ((FragmentPagerAdapter) homeViewPager.getAdapter()).getItem(homeViewPager.getCurrentItem())).popFragment();
+//            return;
+//        }
+
+        if (isMainTabTag(currentTabTag)) {
             isPopFragment = ((BasicFragment) getSupportFragmentManager()
                     .findFragmentByTag(currentTabTag)).popFragment();
         }

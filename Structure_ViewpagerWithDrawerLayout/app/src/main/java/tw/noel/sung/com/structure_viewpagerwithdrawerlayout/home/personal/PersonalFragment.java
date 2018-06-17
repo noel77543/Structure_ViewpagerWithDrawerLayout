@@ -1,5 +1,6 @@
 package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +12,12 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.MainActivity;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.DetailActivity;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.model.DetailData;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.adapter.PersonAdapter;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.detail.PersonalDetailFragment;
 
 /**
  * Created by noel on 2018/6/9.
@@ -61,15 +64,23 @@ public class PersonalFragment extends BasicFragment implements PersonAdapter.onI
     //---------------------
 
     /***
-     *  注意 點擊事件 替換的區域
+     *
      * @param view
      * @param position
      */
     @Override
     public void onItemClick(View view, int position) {
-        //注意兩個method調用的差別!  以及back事件的差異
-//        replaceBasicFragment2(R.id.home_pager_id, new PersonalDetailFragment(), true);
-        replaceParentFragment(android.R.id.tabcontent, new PersonalDetailFragment(), true);
+        DetailData detailData = new DetailData();
+        detailData.setIndex(position);
+        detailData.setViewTitle(getString(R.string.personal_detail_title));
 
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("detailData", detailData);
+
+        Intent intent = new Intent(activity, DetailActivity.class);
+        intent.putExtra("nextPage", DetailActivity.HOME_PERSONAL_DETAIL);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 }

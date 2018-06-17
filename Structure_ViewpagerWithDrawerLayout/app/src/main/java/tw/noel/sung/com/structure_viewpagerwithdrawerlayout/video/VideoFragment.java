@@ -28,7 +28,7 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video.others.OthersV
  * Created by noel on 2018/6/9.
  */
 
-public class VideoFragment extends BasicFragment{
+public class VideoFragment extends BasicFragment {
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
     @BindView(R.id.view_pager)
@@ -39,6 +39,7 @@ public class VideoFragment extends BasicFragment{
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private String[] tabNames;
     private int[] colors;
+
     //-----------
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +67,6 @@ public class VideoFragment extends BasicFragment{
     }
 
 
-
     //-------------
 
     /***
@@ -74,11 +74,15 @@ public class VideoFragment extends BasicFragment{
      */
     private void initTabs() {
         tabNames = getResources().getStringArray(R.array.video_tabs);
+        HotViewPagerContainerFragment hotViewPagerContainerFragment = new HotViewPagerContainerFragment();
+        FunnyViewPagerContainerFragment funnyViewPagerContainerFragment = new FunnyViewPagerContainerFragment();
+        OthersViewPagerContainerFragment othersViewPagerContainerFragment = new OthersViewPagerContainerFragment();
+
         colors = new int[]{R.color.main_tab_non_select, R.color.main_tab_selected, R.color.main_tab_indicator, R.color.main_tab_bg};
         fragments = new ArrayList<>();
-        fragments.add(new HotViewPagerContainerFragment());
-        fragments.add(new FunnyViewPagerContainerFragment());
-        fragments.add(new OthersViewPagerContainerFragment());
+        fragments.add(hotViewPagerContainerFragment);
+        fragments.add(funnyViewPagerContainerFragment);
+        fragments.add(othersViewPagerContainerFragment);
         videoAdapter = new VideoAdapter(getFragmentManager(), fragments, tabNames);
 
         addTabs(tabNames, colors, TabLayout.MODE_FIXED);

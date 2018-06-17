@@ -1,5 +1,6 @@
 package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.MainActivity;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.DetailActivity;
 
 
 /**
@@ -38,6 +40,7 @@ public abstract class BasicFragment extends Fragment {
         getChildFragmentManager().executePendingTransactions();
     }
     //----------------------
+
     /**
      * 第一層 箱子container用 有 bundle
      */
@@ -67,6 +70,8 @@ public abstract class BasicFragment extends Fragment {
         transaction.commit();
         getParentFragment().getChildFragmentManager().executePendingTransactions();
     }
+
+
     //-------------
 
     /**
