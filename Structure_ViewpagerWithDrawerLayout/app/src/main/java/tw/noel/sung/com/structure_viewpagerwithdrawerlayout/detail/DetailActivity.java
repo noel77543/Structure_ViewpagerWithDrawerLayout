@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.issue.IssueDetailFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.personal.PersonalDetailFragment;
 
 /**
@@ -88,7 +89,7 @@ public class DetailActivity extends FragmentActivity {
 
             //議題
             case ISSUE_DETAIL:
-
+                fragment = new IssueDetailFragment();
                 break;
 
             //直播

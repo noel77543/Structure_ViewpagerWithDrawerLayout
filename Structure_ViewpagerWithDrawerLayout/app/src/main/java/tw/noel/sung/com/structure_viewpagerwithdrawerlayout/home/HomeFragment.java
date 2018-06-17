@@ -13,14 +13,12 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.adapter.HomeAdapter;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.PersonalViewPagerContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.setting.SettingViewPagerContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.topic.TopicViewPagerContainerFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue.detail.IssueDetailFragment;
 
 /**
  * Created by noel on 2018/6/9.

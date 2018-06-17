@@ -1,5 +1,6 @@
 package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,11 +12,12 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.DetailActivity;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.model.DetailData;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue.adapter.IssueAdapter;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue.detail.IssueDetailFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.issue.IssueDetailFragment;
 
 /**
  * Created by noel on 2018/6/9.
@@ -64,7 +66,17 @@ public class IssueFragment extends BasicFragment implements IssueAdapter.onItemC
 
     @Override
     public void onItemClick(View view, int position) {
-        replaceBasicFragment2(android.R.id.tabcontent, new IssueDetailFragment(), true);
+        DetailData detailData = new DetailData();
+        detailData.setIndex(position);
+        detailData.setViewTitle(getString(R.string.issue_detail_title));
 
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("detailData", detailData);
+
+        Intent intent = new Intent(activity, DetailActivity.class);
+        intent.putExtra("nextPage", DetailActivity.ISSUE_DETAIL);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 }

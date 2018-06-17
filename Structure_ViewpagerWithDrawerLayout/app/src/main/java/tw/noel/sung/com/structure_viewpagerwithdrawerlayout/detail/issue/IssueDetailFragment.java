@@ -1,4 +1,4 @@
-package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue.detail;
+package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.issue;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,13 +12,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicDetailFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
 
 /**
  * Created by noel on 2018/6/9.
  */
 
-public class IssueDetailFragment extends BasicFragment {
+public class IssueDetailFragment extends BasicDetailFragment {
     @BindView(R.id.text_view)
     TextView textView;
     private View view;
@@ -64,6 +65,7 @@ public class IssueDetailFragment extends BasicFragment {
     @Override
     public void onResume() {
         super.onResume();
+        activity.textView.setText(getString(R.string.issue_detail_title));
         index = 1;
         handler = new Handler();
         runnable = new Runnable() {
