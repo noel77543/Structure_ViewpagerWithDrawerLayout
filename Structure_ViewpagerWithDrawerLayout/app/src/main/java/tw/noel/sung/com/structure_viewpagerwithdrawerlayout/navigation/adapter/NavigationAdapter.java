@@ -38,10 +38,13 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         notifyDataSetChanged();
     }
 
+    //------------
+
     @Override
     public long getItemId(int position) {
         return position;
     }
+
     //--------
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -61,7 +64,6 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
     public int getItemCount() {
         return items.length;
     }
-
 
     //-----------------------
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -2,19 +2,16 @@ package tw.noel.sung.com.structure_viewpagerwithdrawerlayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -25,15 +22,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicViewPagerContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.HomeContainerFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.HomeFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.PersonalFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue.IssueContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.live.LiveContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.navigation.adapter.NavigationAdapter;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.navigation.collect_point.CollectActivity;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.photo.PhotoContainerFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.BottomTabHostBehavior;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video.VideoContainerFragment;
 
 /**
@@ -72,6 +67,8 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
     private void init() {
         initTabs();
         initNavigation();
+//        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) tabHost.getLayoutParams();
+//        params.setBehavior(new BottomTabHostBehavior());
     }
 
 
@@ -212,7 +209,7 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
 //                    }
 //                }
 //            }
-            //            ViewPager homeViewPager =  ((HomeFragment)((getSupportFragmentManager().findFragmentByTag(currentTabTag))).getFragmentManager().findFragmentByTag("個人")).viewPager;
+        //            ViewPager homeViewPager =  ((HomeFragment)((getSupportFragmentManager().findFragmentByTag(currentTabTag))).getFragmentManager().findFragmentByTag("個人")).viewPager;
 //            ((BasicFragment) ((FragmentPagerAdapter) homeViewPager.getAdapter()).getItem(homeViewPager.getCurrentItem())).popFragment();
 //            return;
 //        }

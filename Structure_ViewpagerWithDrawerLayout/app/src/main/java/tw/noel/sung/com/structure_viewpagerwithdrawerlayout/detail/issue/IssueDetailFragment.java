@@ -25,7 +25,7 @@ public class IssueDetailFragment extends BasicDetailFragment {
     private View view;
     private Runnable runnable;
     private Handler handler;
-    private int index = 1;
+    private int index;
 
     //-----------
     @Override

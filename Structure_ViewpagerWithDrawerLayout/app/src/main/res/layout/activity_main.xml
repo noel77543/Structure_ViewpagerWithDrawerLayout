@@ -6,12 +6,14 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <android.support.design.widget.AppBarLayout
-            android:id="@+id/appBarLayout"
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -19,17 +21,28 @@
 
         </android.support.design.widget.AppBarLayout>
 
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <include
+
+                layout="@layout/module_container" />
+        </LinearLayout>
+
         <android.support.v4.app.FragmentTabHost
             android:id="@android:id/tabhost"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main_tab_bg"
             android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            >
+            app:layout_anchor="@id/linear_layout"
+            app:layout_anchorGravity="bottom"
+            app:layout_behavior=".util.BottomTabHostBehavior" />
 
-            <include layout="@layout/module_container" />
-
-        </android.support.v4.app.FragmentTabHost>
     </android.support.design.widget.CoordinatorLayout>
 
     <LinearLayout

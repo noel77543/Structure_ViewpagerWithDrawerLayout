@@ -4,7 +4,7 @@
     android:layout_height="@dimen/action_bar_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/main_tab_bg"
-    app:layout_scrollFlags="scroll|enterAlways|snap"
+    app:layout_scrollFlags="scroll|enterAlways"
     android:orientation="horizontal">
 
     <ImageView
