@@ -16,7 +16,7 @@
     </string-array>
 
     <string-array name="navigation_items">
-        <item>@string/navigation_item_collect</item>
+        <item>@string/navigation_item_yahoo</item>
         <item>@string/navigation_item_issue</item>
     </string-array>
 

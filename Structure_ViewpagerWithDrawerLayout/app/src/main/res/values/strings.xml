@@ -19,7 +19,7 @@
 
 
     <!--navigation-->
-    <string name="navigation_item_collect">集點換獎品</string>
+    <string name="navigation_item_yahoo">Yahoo！</string>
     <string name="navigation_item_issue">議題</string>
 
 
@@ -31,15 +31,19 @@
     <string name="collect_point_title">集點活動</string>
 
 
-
     <!--personal detail-->
     <string name="personal_detail_title">個人詳細頁</string>
     <string name="personal_detail_text">%1$s - %2$d</string>
 
 
-
     <!--coordinate layout-->
     <string name="main_behavior">.util.BottomTabHostBehavior</string>
 
-
+    <!--webview-->
+    <string name="web_loading_message_go_to">現正前往%s,請稍後..</string>
+    <string name="web_title">SSL 憑證錯誤</string>
+    <string name="web_message">無法驗證伺服器SSL憑證。\n仍要繼續嗎?</string>
+    <string name="web_toast">請同意憑證,方可使用此功能</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
 </resources>

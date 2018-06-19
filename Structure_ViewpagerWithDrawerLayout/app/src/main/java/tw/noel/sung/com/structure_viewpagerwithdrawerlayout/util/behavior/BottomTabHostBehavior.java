@@ -1,4 +1,4 @@
-package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util;
+package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.behavior;
 
 import android.animation.Animator;
 import android.content.Context;

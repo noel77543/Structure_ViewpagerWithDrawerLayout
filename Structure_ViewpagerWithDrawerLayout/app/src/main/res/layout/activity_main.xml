@@ -41,7 +41,7 @@
             android:orientation="vertical"
             app:layout_anchor="@id/linear_layout"
             app:layout_anchorGravity="bottom"
-            app:layout_behavior=".util.BottomTabHostBehavior" />
+            app:layout_behavior=".util.behavior.BottomTabHostBehavior" />
 
     </android.support.design.widget.CoordinatorLayout>
 

@@ -2,7 +2,6 @@ package tw.noel.sung.com.structure_viewpagerwithdrawerlayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.GravityCompat;
@@ -26,10 +25,9 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.HomeContainerFr
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue.IssueContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.live.LiveContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.navigation.adapter.NavigationAdapter;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.navigation.collect_point.CollectActivity;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.photo.PhotoContainerFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.BottomTabHostBehavior;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video.VideoContainerFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.web.WebActivity;
 
 /**
  * Created by noel on 2018/6/10.
@@ -67,8 +65,7 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
     private void init() {
         initTabs();
         initNavigation();
-//        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) tabHost.getLayoutParams();
-//        params.setBehavior(new BottomTabHostBehavior());
+
     }
 
 
@@ -128,7 +125,7 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
         switch (position) {
             //集點換獎品
             case 0:
-                startActivity(new Intent(MainActivity.this, CollectActivity.class));
+                startActivity(new Intent(MainActivity.this, WebActivity.class));
                 break;
             //議題
             case 1:
