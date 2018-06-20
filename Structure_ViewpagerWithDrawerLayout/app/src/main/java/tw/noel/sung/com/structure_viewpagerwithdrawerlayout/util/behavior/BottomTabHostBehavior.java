@@ -6,6 +6,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Interpolator;
@@ -65,6 +66,7 @@ public class BottomTabHostBehavior extends CoordinatorLayout.Behavior<View> {
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
+
         //dy大於0是向上滾動 小於0是向下滾動 數值拉大一點 避免敏感度過高
         if (dy > 0 && !isAnimate && child.getVisibility() == View.VISIBLE) {
             hide(child);

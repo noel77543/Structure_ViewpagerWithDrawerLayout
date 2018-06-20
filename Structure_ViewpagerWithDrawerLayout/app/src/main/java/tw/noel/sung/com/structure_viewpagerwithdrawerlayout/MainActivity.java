@@ -127,9 +127,9 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
             //集點換獎品
             case 0:
                 Intent intent = new Intent(this,WebActivity.class);
-                intent.putExtra("", ConnectInfo.URL_YAHOO);
-                intent.putExtra("","");
-                startActivity(new Intent(MainActivity.this, WebActivity.class));
+                intent.putExtra("webURL", ConnectInfo.URL_YAHOO);
+                intent.putExtra("pageTitle",getString(R.string.navigation_item_yahoo));
+                startActivity(intent);
                 break;
             //議題
             case 1:
