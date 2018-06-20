@@ -29,7 +29,6 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <include
-
                 layout="@layout/module_container" />
         </LinearLayout>
 
@@ -37,7 +36,7 @@
             android:id="@android:id/tabhost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/main_tab_bg"
+            android:background="@android:color/darker_gray"
             android:orientation="vertical"
             app:layout_anchor="@id/linear_layout"
             app:layout_anchorGravity="bottom"

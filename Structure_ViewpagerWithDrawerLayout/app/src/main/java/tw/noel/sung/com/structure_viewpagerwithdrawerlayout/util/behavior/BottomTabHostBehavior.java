@@ -16,6 +16,7 @@ import android.view.animation.Interpolator;
 
 public class BottomTabHostBehavior extends CoordinatorLayout.Behavior<View> {
 
+    private final int ANIMATION_DURATION = 300;
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
     //控件距離coordinatorLayout底部距離
     private float viewY;
@@ -54,8 +55,6 @@ public class BottomTabHostBehavior extends CoordinatorLayout.Behavior<View> {
     //--------
 
     /**
-     * 在嵌套滑動的子View未滑動之前準備滑動的情況 (待修改)
-     *
      * @param coordinatorLayout 此行為與關聯的視圖的父級CoordinatorLayout
      * @param child             該Behavior對應的View
      * @param target            具體嵌套滑動的那個子類
@@ -67,9 +66,9 @@ public class BottomTabHostBehavior extends CoordinatorLayout.Behavior<View> {
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
         //dy大於0是向上滾動 小於0是向下滾動 數值拉大一點 避免敏感度過高
-        if (dy > 20 && !isAnimate && child.getVisibility() == View.VISIBLE) {
+        if (dy > 0 && !isAnimate && child.getVisibility() == View.VISIBLE) {
             hide(child);
-        } else if (dy < 20 && !isAnimate && child.getVisibility() == View.INVISIBLE) {
+        } else if (dy < 0 && !isAnimate && child.getVisibility() == View.INVISIBLE) {
             show(child);
         }
     }
@@ -81,7 +80,7 @@ public class BottomTabHostBehavior extends CoordinatorLayout.Behavior<View> {
      * @param view
      */
     private void hide(final View view) {
-        ViewPropertyAnimator animator = view.animate().translationY(viewY).setInterpolator(INTERPOLATOR).setDuration(500);
+        ViewPropertyAnimator animator = view.animate().translationY(viewY).setInterpolator(INTERPOLATOR).setDuration(ANIMATION_DURATION);
 
         animator.setListener(new Animator.AnimatorListener() {
             @Override
@@ -97,7 +96,6 @@ public class BottomTabHostBehavior extends CoordinatorLayout.Behavior<View> {
 
             @Override
             public void onAnimationCancel(Animator animator) {
-//                show(view);
             }
 
             @Override
@@ -113,7 +111,7 @@ public class BottomTabHostBehavior extends CoordinatorLayout.Behavior<View> {
      * @param view
      */
     private void show(final View view) {
-        ViewPropertyAnimator animator = view.animate().translationY(0).setInterpolator(INTERPOLATOR).setDuration(500);
+        ViewPropertyAnimator animator = view.animate().translationY(0).setInterpolator(INTERPOLATOR).setDuration(ANIMATION_DURATION);
         animator.setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
@@ -128,7 +126,6 @@ public class BottomTabHostBehavior extends CoordinatorLayout.Behavior<View> {
 
             @Override
             public void onAnimationCancel(Animator animator) {
-//                hide(view);
             }
 
             @Override

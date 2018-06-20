@@ -21,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.connect.ConnectInfo;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.HomeContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.issue.IssueContainerFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.live.LiveContainerFragment;
@@ -125,6 +126,9 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
         switch (position) {
             //集點換獎品
             case 0:
+                Intent intent = new Intent(this,WebActivity.class);
+                intent.putExtra("", ConnectInfo.URL_YAHOO);
+                intent.putExtra("","");
                 startActivity(new Intent(MainActivity.this, WebActivity.class));
                 break;
             //議題
@@ -193,23 +197,6 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
         boolean isPopFragment = false;
         String currentTabTag = tabHost.getCurrentTabTag();
 
-
-//        if (currentTabTag.equals("首頁")) {
-//
-//            if (((getSupportFragmentManager().findFragmentByTag(currentTabTag))) instanceof HomeContainerFragment) {
-//                Log.e("yes", "yes");
-//                if(     ((getSupportFragmentManager().findFragmentByTag(currentTabTag))).getChildFragmentManager().findFragmentByTag(null) instanceof  HomeFragment){
-//                    Log.e("yesyes", "yesyes");
-//                    ViewPager homeViewPager = ((HomeFragment)(getSupportFragmentManager().findFragmentByTag(currentTabTag))).viewPager;
-//                    if(   ((FragmentPagerAdapter) homeViewPager.getAdapter()).getItem(homeViewPager.getCurrentItem())  instanceof PersonalFragment){
-//                        Log.e("yesyesyes", "yesyesyes");
-//                    }
-//                }
-//            }
-        //            ViewPager homeViewPager =  ((HomeFragment)((getSupportFragmentManager().findFragmentByTag(currentTabTag))).getFragmentManager().findFragmentByTag("個人")).viewPager;
-//            ((BasicFragment) ((FragmentPagerAdapter) homeViewPager.getAdapter()).getItem(homeViewPager.getCurrentItem())).popFragment();
-//            return;
-//        }
 
         if (isMainTabTag(currentTabTag)) {
             isPopFragment = ((BasicFragment) getSupportFragmentManager()
