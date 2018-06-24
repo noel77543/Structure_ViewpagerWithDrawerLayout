@@ -1,20 +1,24 @@
 package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal;
 
+import android.arch.lifecycle.Lifecycle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.MainActivity;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
+
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.DetailActivity;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.model.DetailData;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.adapter.PersonAdapter;
@@ -24,6 +28,7 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.adapte
  */
 
 public class PersonalFragment extends BasicFragment implements PersonAdapter.onItemClickListener {
+
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     private View view;
@@ -44,13 +49,19 @@ public class PersonalFragment extends BasicFragment implements PersonAdapter.onI
         }
         return view;
     }
+
+
+
     //--------
 
     /***
      *  初始化
      */
     private void init() {
-        personAdapter = new PersonAdapter();
+        recyclerView.setHasFixedSize(true);
+
+        personAdapter = new PersonAdapter(activity);
+
         personAdapter.setOnItemClickListener(this);
         recyclerView.setAdapter(personAdapter);
         ArrayList<String> data = new ArrayList<>();
@@ -59,6 +70,12 @@ public class PersonalFragment extends BasicFragment implements PersonAdapter.onI
         }
         personAdapter.setData(data);
         recyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
+    }
+
+
+    public TextView getFirstTextView(){
+        PersonAdapter.ViewHolder viewHolder = (PersonAdapter.ViewHolder)recyclerView.findViewHolderForAdapterPosition(0);
+        return viewHolder.textView;
     }
 
     //---------------------
@@ -82,5 +99,8 @@ public class PersonalFragment extends BasicFragment implements PersonAdapter.onI
         intent.putExtras(bundle);
 
         startActivity(intent);
+
     }
+
+
 }

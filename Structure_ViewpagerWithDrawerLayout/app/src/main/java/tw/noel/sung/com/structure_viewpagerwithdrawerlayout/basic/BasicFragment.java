@@ -1,14 +1,11 @@
 package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.MainActivity;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.DetailActivity;
 
 
 /**

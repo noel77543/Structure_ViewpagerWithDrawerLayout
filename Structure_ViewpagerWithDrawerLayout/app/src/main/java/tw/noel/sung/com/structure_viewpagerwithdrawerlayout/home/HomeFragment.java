@@ -16,8 +16,11 @@ import butterknife.ButterKnife;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.adapter.HomeAdapter;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.PersonalFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.PersonalViewPagerContainerFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.setting.SettingFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.setting.SettingViewPagerContainerFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.topic.TopicFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.topic.TopicViewPagerContainerFragment;
 
 /**
@@ -25,6 +28,7 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.topic.TopicView
  */
 
 public class HomeFragment extends BasicFragment {
+
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
     @BindView(R.id.view_pager)
@@ -79,12 +83,16 @@ public class HomeFragment extends BasicFragment {
         fragments.add(topicViewPagerContainerFragment);
         fragments.add(personalViewPagerContainerFragment);
         fragments.add(settingViewPagerContainerFragment);
+
+
         homeAdapter = new HomeAdapter(getFragmentManager(), fragments, tabNames);
 
         addTabs(tabNames, colors, TabLayout.MODE_FIXED);
         viewPager.setAdapter(homeAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
+
 
     //------------
 

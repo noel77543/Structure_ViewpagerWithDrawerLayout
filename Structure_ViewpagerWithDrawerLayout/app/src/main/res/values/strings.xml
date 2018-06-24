@@ -46,4 +46,8 @@
     <string name="web_toast">請同意憑證,方可使用此功能</string>
     <string name="yes">是</string>
     <string name="no">否</string>
+    
+    
+    <!--youtube api key-->
+    <string name="youtube_key">AIzaSyBrQcnH8imWgxHT_aEXhBFveXzz_6924Ps</string>
 </resources>

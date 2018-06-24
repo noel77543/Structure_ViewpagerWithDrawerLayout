@@ -48,7 +48,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
     //--------
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.list_navigation, null);
+        View view = inflater.inflate(R.layout.list_navigation, parent, false);
         return new ViewHolder(view);
     }
     //------------------------

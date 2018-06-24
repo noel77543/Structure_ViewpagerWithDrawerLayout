@@ -1,5 +1,6 @@
 package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +17,14 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
  * Created by noel on 2018/6/14.
  */
 
-public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder> {
+public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private Context context;
     private ArrayList<String> datas;
     private onItemClickListener mOnItemClickListener;
 
-    public PersonAdapter() {
+    public PersonAdapter(Context context) {
+        this.context = context;
         datas = new ArrayList<>();
     }
 
@@ -31,25 +35,38 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
-    @Override
-    public PersonAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, null);
-        return new ViewHolder(view);
-    }
+
+    //---------
 
     @Override
-    public void onBindViewHolder(PersonAdapter.ViewHolder holder, int position) {
-        holder.textView.setText(datas.get(position));
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent,false));
     }
+
+    //-------
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof ViewHolder) {
+            ViewHolder viewHolder = (ViewHolder) holder;
+            viewHolder.textView.setText(datas.get(position));
+        }
+    }
+
+    //----------
 
     @Override
     public int getItemCount() {
         return datas.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    //--------
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.text_view)
-        TextView textView;
+        public TextView textView;
+
 
         ViewHolder(View view) {
             super(view);

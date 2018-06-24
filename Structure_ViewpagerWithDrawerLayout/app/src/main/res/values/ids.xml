@@ -2,4 +2,5 @@
 <resources>
     <item name="home_pager_id" type="id" />
     <item name="video_pager_id" type="id" />
+    <item name="youtube_player_container_id" type="id"/>
 </resources>
