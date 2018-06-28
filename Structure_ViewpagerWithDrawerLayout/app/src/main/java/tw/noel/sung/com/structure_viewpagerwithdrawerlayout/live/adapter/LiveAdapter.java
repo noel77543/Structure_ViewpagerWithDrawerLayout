@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
+
+import static android.view.View.generateViewId;
 
 /**
  * Created by noel on 2018/6/14.
@@ -33,13 +37,13 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.ViewHolder> {
 
     @Override
     public LiveAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_youtube_player, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(LiveAdapter.ViewHolder holder, int position) {
-        holder.textView.setText(datas.get(position));
+        holder.frameLayout.setBackgroundResource(R.drawable.img_youtube);
     }
 
     @Override
@@ -48,13 +52,15 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.text_view)
-        TextView textView;
+        @BindView(R.id.frame_layout_youtube)
+        FrameLayout frameLayout;
 
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
-            view.setOnClickListener(this);
+            //動態生成ID
+            frameLayout.setId(generateViewId());
+            frameLayout.setOnClickListener(this);
         }
 
         @Override

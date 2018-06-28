@@ -41,8 +41,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     //youtube
-    compile 'com.github.PierfrancescoSoffritti:AndroidYouTubePlayer:7.0.1'
-//    compile files('libs/YouTubeAndroidPlayerApi.jar')
+//    compile 'com.github.PierfrancescoSoffritti:AndroidYouTubePlayer:7.0.1'
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
 
 
     compile "android.arch.lifecycle:runtime:1.0.0-alpha1"
