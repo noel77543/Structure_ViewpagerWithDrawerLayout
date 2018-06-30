@@ -124,7 +124,7 @@ public class LiveFragment extends BasicFragment implements LiveAdapter.OnPlayBut
     //----------
 
     /***
-     *  清單由下往上滾動 且 view上端被遮擋
+     *  清單由下往上滾動 且 view下端被遮擋
      *  或者
      *  清單由上網下滾動 且 view上端被遮擋
      * @param dy
