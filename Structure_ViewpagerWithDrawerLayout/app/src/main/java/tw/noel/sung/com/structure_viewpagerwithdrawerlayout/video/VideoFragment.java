@@ -1,13 +1,13 @@
 package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.ColorRes;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 
 import java.util.ArrayList;
 
@@ -15,30 +15,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.adapter.HomeAdapter;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.personal.PersonalViewPagerContainerFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.setting.SettingViewPagerContainerFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.home.topic.TopicViewPagerContainerFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.DetailActivity;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.model.DetailData;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video.adapter.VideoAdapter;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video.funnay.FunnyViewPagerContainerFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video.hot.HotViewPagerContainerFragment;
-import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.video.others.OthersViewPagerContainerFragment;
+
 
 /**
  * Created by noel on 2018/6/9.
  */
 
-public class VideoFragment extends BasicFragment {
-    @BindView(R.id.tab_layout)
-    TabLayout tabLayout;
-    @BindView(R.id.view_pager)
-    ViewPager viewPager;
+public class VideoFragment extends BasicFragment implements VideoAdapter.onItemClickListener{
 
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
     private View view;
     private VideoAdapter videoAdapter;
-    private ArrayList<Fragment> fragments = new ArrayList<>();
-    private String[] tabNames;
-    private int[] colors;
 
     //-----------
     @Override
@@ -57,53 +48,48 @@ public class VideoFragment extends BasicFragment {
     }
 
 
-    //------------------
+
+    //--------
 
     /***
      *  初始化
      */
     private void init() {
-        initTabs();
-    }
+        recyclerView.setHasFixedSize(true);
 
-
-    //-------------
-
-    /***
-     *  初始化 tab
-     */
-    private void initTabs() {
-        tabNames = getResources().getStringArray(R.array.video_tabs);
-        HotViewPagerContainerFragment hotViewPagerContainerFragment = new HotViewPagerContainerFragment();
-        FunnyViewPagerContainerFragment funnyViewPagerContainerFragment = new FunnyViewPagerContainerFragment();
-        OthersViewPagerContainerFragment othersViewPagerContainerFragment = new OthersViewPagerContainerFragment();
-
-        colors = new int[]{R.color.main_tab_non_select, R.color.main_tab_selected, R.color.main_tab_indicator, R.color.main_tab_bg};
-        fragments = new ArrayList<>();
-        fragments.add(hotViewPagerContainerFragment);
-        fragments.add(funnyViewPagerContainerFragment);
-        fragments.add(othersViewPagerContainerFragment);
-        videoAdapter = new VideoAdapter(getFragmentManager(), fragments, tabNames);
-
-        addTabs(tabNames, colors, TabLayout.MODE_FIXED);
-        viewPager.setAdapter(videoAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-    }
-
-    //------------
-
-    /***
-     *  add tabs
-     */
-    public void addTabs(String[] tabNames, @ColorRes int[] colors, int mode) {
-        for (String name : tabNames) {
-            tabLayout.addTab(tabLayout.newTab().setText(name));
+        videoAdapter = new VideoAdapter();
+        videoAdapter.setOnItemClickListener(this);
+        recyclerView.setAdapter(videoAdapter);
+        ArrayList<String> data = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            data.add(getString(R.string.main_tab_video));
         }
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        tabLayout.setTabTextColors(getResources().getColor(colors[0]), getResources().getColor(colors[1]));
-        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(colors[2]));
-        tabLayout.setBackgroundColor(getResources().getColor(colors[3]));
-        tabLayout.setTabMode(mode);
+        videoAdapter.setData(data);
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
     }
 
+
+    //---------------------
+
+    /***
+     *
+     * @param view
+     * @param position
+     */
+    @Override
+    public void onItemClick(View view, int position) {
+        DetailData detailData = new DetailData();
+        detailData.setIndex(position);
+        detailData.setViewTitle(getString(R.string.personal_detail_title));
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("detailData", detailData);
+
+        Intent intent = new Intent(activity, DetailActivity.class);
+        intent.putExtra("nextPage", DetailActivity.VIDEO_DETAIL);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
+
+    }
 }

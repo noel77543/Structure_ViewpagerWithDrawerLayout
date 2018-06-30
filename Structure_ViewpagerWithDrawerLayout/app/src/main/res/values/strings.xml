@@ -12,10 +12,6 @@
     <string name="home_tab_personal">個人</string>
     <string name="home_tab_setting">設定</string>
 
-    <!--video-->
-    <string name="video_tab_hot">熱門</string>
-    <string name="video_tab_funny">搞笑</string>
-    <string name="video_tab_others">其他</string>
 
 
     <!--navigation-->
@@ -34,10 +30,11 @@
     <!--personal detail-->
     <string name="personal_detail_title">個人詳細頁</string>
     <string name="personal_detail_text">%1$s - %2$d</string>
-
+    <!--video detail-->
+    <string name="video_detail_title">影音詳細頁</string>
 
     <!--coordinate layout-->
-    <string name="main_behavior">.util.BottomTabHostBehavior</string>
+    <!--<string name="main_behavior">.util.BottomTabHostBehavior</string>-->
 
     <!--webview-->
     <string name="web_loading_message_go_to">現正前往%s,請稍後..</string>
@@ -47,7 +44,9 @@
     <string name="yes">是</string>
     <string name="no">否</string>
     
-    
+
+
+
     <!--youtube api key-->
     <string name="youtube_key">AIzaSyBrQcnH8imWgxHT_aEXhBFveXzz_6924Ps</string>
 </resources>

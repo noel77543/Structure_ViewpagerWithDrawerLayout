@@ -88,6 +88,9 @@ public class LiveFragment extends BasicFragment implements LiveAdapter.OnPlayBut
 
     //-----------
 
+    /***
+     *  加入資料
+     */
     private void addData() {
         lives = new ArrayList<>();
 

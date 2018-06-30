@@ -19,6 +19,7 @@ import butterknife.OnClick;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.issue.IssueDetailFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.personal.PersonalDetailFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.video.VideoDetailFragment;
 
 /**
  * Created by noel on 2018/6/17.
@@ -42,14 +43,12 @@ public class DetailActivity extends FragmentActivity {
 
     public static final int LIVE_DETAIL = 3001;
 
-    public static final int VIDEO_HOT_DETAIL = 4001;
-    public static final int VIDEO_FUNNY_DETAIL = 4002;
-    public static final int VIDEO_OTHERS_DETAIL = 4003;
+    public static final int VIDEO_DETAIL = 4001;
 
     public static final int PHOTO_DETAIL = 5001;
 
 
-    @IntDef({HOME_TOPIC_DETAIL, HOME_PERSONAL_DETAIL, HOME_SETTING_DETAIL, ISSUE_DETAIL, LIVE_DETAIL, VIDEO_HOT_DETAIL, VIDEO_FUNNY_DETAIL, VIDEO_OTHERS_DETAIL, PHOTO_DETAIL})
+    @IntDef({HOME_TOPIC_DETAIL, HOME_PERSONAL_DETAIL, HOME_SETTING_DETAIL, ISSUE_DETAIL, LIVE_DETAIL, VIDEO_DETAIL, PHOTO_DETAIL})
     @Retention(RetentionPolicy.SOURCE)
     public @interface NextPage {
     }
@@ -97,19 +96,9 @@ public class DetailActivity extends FragmentActivity {
 
                 break;
 
-            //影音 - 熱門
-            case VIDEO_HOT_DETAIL:
-
-                break;
-
-            //影音 - 搞笑
-            case VIDEO_FUNNY_DETAIL:
-
-                break;
-
-            //影音 - 其他
-            case VIDEO_OTHERS_DETAIL:
-
+            //影音
+            case VIDEO_DETAIL:
+                fragment = new VideoDetailFragment();
                 break;
 
             //圖輯
