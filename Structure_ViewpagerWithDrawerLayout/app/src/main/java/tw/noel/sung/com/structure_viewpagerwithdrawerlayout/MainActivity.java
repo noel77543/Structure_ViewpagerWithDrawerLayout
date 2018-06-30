@@ -50,6 +50,8 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
     private String[] navigationItems;
     private NavigationAdapter navigationAdapter;
 
+    private boolean isFullScreen;
+    private OnYoutubePlayerFullScreenListener onYoutubePlayerFullScreenListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,9 +129,9 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
         switch (position) {
             //集點換獎品
             case 0:
-                Intent intent = new Intent(this,WebActivity.class);
+                Intent intent = new Intent(this, WebActivity.class);
                 intent.putExtra("webURL", ConnectInfo.URL_YAHOO);
-                intent.putExtra("pageTitle",getString(R.string.navigation_item_yahoo));
+                intent.putExtra("pageTitle", getString(R.string.navigation_item_yahoo));
                 startActivity(intent);
                 break;
             //議題
@@ -198,7 +200,10 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
         boolean isPopFragment = false;
         String currentTabTag = tabHost.getCurrentTabTag();
 
-
+        if (isFullScreen) {
+            onYoutubePlayerFullScreenListener.onYoutubePlayerFullScreen();
+            return;
+        }
         if (isMainTabTag(currentTabTag)) {
             isPopFragment = ((BasicFragment) getSupportFragmentManager()
                     .findFragmentByTag(currentTabTag)).popFragment();
@@ -221,8 +226,23 @@ public class MainActivity extends FragmentActivity implements NavigationAdapter.
 
     //----------
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
+    /***
+     *  全螢幕模式處理
+     * @return
+     */
+    public interface OnYoutubePlayerFullScreenListener {
+        void onYoutubePlayerFullScreen();
+    }
+
+    public void setOnOnYoutubePlayerFullScreenListener(OnYoutubePlayerFullScreenListener onYoutubePlayerFullScreenListener) {
+        this.onYoutubePlayerFullScreenListener = onYoutubePlayerFullScreenListener;
+    }
+
+    public boolean isFullScreen() {
+        return isFullScreen;
+    }
+
+    public void setFullScreen(boolean fullScreen) {
+        isFullScreen = fullScreen;
     }
 }

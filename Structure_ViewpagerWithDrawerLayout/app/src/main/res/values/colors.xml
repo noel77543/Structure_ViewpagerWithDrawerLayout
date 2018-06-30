@@ -13,4 +13,12 @@
     <color name="main_tab_indicator">#de650d</color>
     <color name="main_tab_bg">#1e2023</color>
 
+    <!--youtube play button-->
+    <color name="play_button_start">#ef6e6e6e</color>
+    <color name="play_button_center">#c9595959</color>
+    <color name="play_button_end">#7b404040</color>
+
+    <color name="player_cover_center">#f4161616</color>
+
+
 </resources>
