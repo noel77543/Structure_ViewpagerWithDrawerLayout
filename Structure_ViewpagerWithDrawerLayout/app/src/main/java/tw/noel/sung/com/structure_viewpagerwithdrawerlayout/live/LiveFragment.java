@@ -20,6 +20,7 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.MainActivity;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.live.adapter.LiveAdapter;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.live.model.Live;
 
 /**
  * Created by noel on 2018/6/9.
@@ -33,7 +34,7 @@ public class LiveFragment extends BasicFragment implements LiveAdapter.OnPlayBut
     private View view;
     private LiveAdapter liveAdapter;
     private YouTubePlayer youTubePlayer;
-    private ArrayList<String> datas = new ArrayList<>();
+    private ArrayList<Live> lives;
     private YouTubePlayerSupportFragment youTubePlayerSupportFragment;
     private LinearLayoutManager linearLayoutManager;
     private int playingItemIndex = NONE_PLAYING;
@@ -65,13 +66,9 @@ public class LiveFragment extends BasicFragment implements LiveAdapter.OnPlayBut
         linearLayoutManager = new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false);
         liveAdapter.setOnPlayButtonClickListener(this);
         recyclerView.setAdapter(liveAdapter);
-        datas.add("VhHQyb4r9Xg");
-        datas.add("pb-kc6DWIDI");
-        datas.add("_l-Mtr-lCAU");
-        datas.add("FuDdstaZXdw");
-        datas.add("w_DjvLKuHGc");
-        datas.add("5DKNU34L5DA");
-        liveAdapter.setData(datas);
+
+        addData();
+        liveAdapter.setData(lives);
 
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -82,24 +79,60 @@ public class LiveFragment extends BasicFragment implements LiveAdapter.OnPlayBut
                     View item = linearLayoutManager.findViewByPosition(playingItemIndex);
                     if (item != null && isScrolledOver(dy, item)) {
                         releasePlayer();
-                        playingItemIndex = NONE_PLAYING;
+
                     }
                 }
             }
         });
     }
+
+    //-----------
+
+    private void addData() {
+        lives = new ArrayList<>();
+
+        Live live = new Live();
+        live.setCurrentTime(0);
+        live.setYoutubeID("VhHQyb4r9Xg");
+        lives.add(live);
+
+        live = new Live();
+        live.setCurrentTime(0);
+        live.setYoutubeID("pb-kc6DWIDI");
+        lives.add(live);
+
+        live = new Live();
+        live.setCurrentTime(0);
+        live.setYoutubeID("_l-Mtr-lCAU");
+        lives.add(live);
+
+        live = new Live();
+        live.setCurrentTime(0);
+        live.setYoutubeID("FuDdstaZXdw");
+        lives.add(live);
+
+        live = new Live();
+        live.setCurrentTime(0);
+        live.setYoutubeID("w_DjvLKuHGc");
+        lives.add(live);
+
+        live = new Live();
+        live.setCurrentTime(0);
+        live.setYoutubeID("5DKNU34L5DA");
+        lives.add(live);
+    }
     //----------
 
     /***
-     *  清單由下往上滾動 且 view上端超過高度的五分之一被遮擋
+     *  清單由下往上滾動 且 view上端被遮擋
      *  或者
-     *  清單由上網下滾動 且 view下端超過高度的五分之一被遮擋
+     *  清單由上網下滾動 且 view上端被遮擋
      * @param dy
      * @param view
      * @return
      */
     private boolean isScrolledOver(int dy, View view) {
-        return (dy > 0 && view.getTop() < -view.getHeight() / 5) || (dy < 0 && (view.getTop()) > 6 * view.getHeight() / 5);
+        return (dy > 0 && view.getTop() < -view.getHeight()) || (dy < 0 && (view.getTop()) > 2 * view.getHeight());
     }
 
 
@@ -107,6 +140,7 @@ public class LiveFragment extends BasicFragment implements LiveAdapter.OnPlayBut
 
     @Override
     public void onPlayButtonClicked(View view, final int position) {
+        //每一次都需釋放player
         releasePlayer();
 
         youTubePlayerSupportFragment = YouTubePlayerSupportFragment.newInstance();
@@ -118,7 +152,8 @@ public class LiveFragment extends BasicFragment implements LiveAdapter.OnPlayBut
                 LiveFragment.this.youTubePlayer = youTubePlayer;
                 youTubePlayer.setFullscreenControlFlags(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION | YouTubePlayer.FULLSCREEN_FLAG_ALWAYS_FULLSCREEN_IN_LANDSCAPE);
                 youTubePlayer.setOnFullscreenListener(LiveFragment.this);
-                youTubePlayer.loadVideo(datas.get(position));
+                //從記錄的播放時間 載入youtube id
+                youTubePlayer.loadVideo(lives.get(playingItemIndex).getYoutubeID(), lives.get(playingItemIndex).getCurrentTime());
             }
 
             @Override
@@ -134,9 +169,13 @@ public class LiveFragment extends BasicFragment implements LiveAdapter.OnPlayBut
      *  釋放player
      */
     private void releasePlayer() {
-        if (youTubePlayer != null) {
+        //youtube 有被初始化 且 有索引項目
+        if (youTubePlayer != null && playingItemIndex != NONE_PLAYING) {
+            //在釋放前 紀錄此項地目前播放時間
+            lives.get(playingItemIndex).setCurrentTime(youTubePlayer.getCurrentTimeMillis());
             youTubePlayer.release();
             getFragmentManager().beginTransaction().remove(youTubePlayerSupportFragment).commit();
+            playingItemIndex = NONE_PLAYING;
         }
     }
 

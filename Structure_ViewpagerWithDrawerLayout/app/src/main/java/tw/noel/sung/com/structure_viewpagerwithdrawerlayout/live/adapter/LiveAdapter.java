@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.live.model.Live;
 
 import static android.view.View.generateViewId;
 
@@ -23,20 +24,20 @@ import static android.view.View.generateViewId;
  */
 
 public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.ViewHolder> {
-    private ArrayList<String> datas;
+    private ArrayList<Live> lives;
     private OnPlayButtonClickListener onPlayButtonClickListener;
     private int lastPosition = -1;
     private Context context;
 
     public LiveAdapter(Context context) {
         this.context = context;
-        datas = new ArrayList<>();
+        lives = new ArrayList<>();
     }
 
     //--------
 
-    public void setData(ArrayList<String> datas) {
-        this.datas = datas;
+    public void setData(ArrayList<Live> lives) {
+        this.lives = lives;
         notifyDataSetChanged();
     }
 
@@ -73,7 +74,7 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return datas.size();
+        return lives.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
