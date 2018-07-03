@@ -19,6 +19,7 @@ import butterknife.OnClick;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.issue.IssueDetailFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.personal.PersonalDetailFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.photo.PhotoDetailFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.video.VideoDetailFragment;
 
 /**
@@ -30,7 +31,7 @@ public class DetailActivity extends FragmentActivity {
 
     @BindView(R.id.button_back)
     Button buttonBack;
-    @BindView(R.id.text_view)
+    @BindView(R.id.text_view_title)
     public TextView textView;
     @BindView(R.id.frame_layout)
     FrameLayout frameLayout;
@@ -38,13 +39,9 @@ public class DetailActivity extends FragmentActivity {
     public static final int HOME_TOPIC_DETAIL = 1001;
     public static final int HOME_PERSONAL_DETAIL = 1002;
     public static final int HOME_SETTING_DETAIL = 1003;
-
     public static final int ISSUE_DETAIL = 2001;
-
     public static final int LIVE_DETAIL = 3001;
-
     public static final int VIDEO_DETAIL = 4001;
-
     public static final int PHOTO_DETAIL = 5001;
 
 
@@ -78,8 +75,8 @@ public class DetailActivity extends FragmentActivity {
                 break;
             //首頁 - 個人
             case HOME_PERSONAL_DETAIL:
-                fragment = new PersonalDetailFragment();
                 bundle.putParcelable("detailData", getIntent().getExtras().getParcelable("detailData"));
+                fragment = new PersonalDetailFragment();
                 break;
             //首頁 - 設定
             case HOME_SETTING_DETAIL:
@@ -103,7 +100,7 @@ public class DetailActivity extends FragmentActivity {
 
             //圖輯
             case PHOTO_DETAIL:
-
+                fragment = new PhotoDetailFragment();
                 break;
         }
         replaceFragment(fragment, bundle);

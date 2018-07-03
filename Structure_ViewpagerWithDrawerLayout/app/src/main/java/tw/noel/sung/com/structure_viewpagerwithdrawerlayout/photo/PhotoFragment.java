@@ -1,5 +1,6 @@
 package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.photo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicFragment;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.DetailActivity;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.photo.adapter.PhotoAdapter;
 
 /**
@@ -62,5 +64,9 @@ public class PhotoFragment extends BasicFragment implements PhotoAdapter.onItemC
     @Override
     public void onItemClick(View view, int position) {
 
+        Intent intent = new Intent(activity, DetailActivity.class);
+        intent.putExtra("nextPage", DetailActivity.PHOTO_DETAIL);
+
+        startActivity(intent);
     }
 }

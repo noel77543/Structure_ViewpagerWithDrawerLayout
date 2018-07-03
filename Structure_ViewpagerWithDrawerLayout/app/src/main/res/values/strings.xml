@@ -32,9 +32,9 @@
     <string name="personal_detail_text">%1$s - %2$d</string>
     <!--video detail-->
     <string name="video_detail_title">影音詳細頁</string>
-
-    <!--coordinate layout-->
-    <!--<string name="main_behavior">.util.BottomTabHostBehavior</string>-->
+    <!--photo detail-->
+    <string name="photo_detail_title">圖輯詳細頁</string>
+    <string name="photo_detail_take_picture">拍照</string>
 
     <!--webview-->
     <string name="web_loading_message_go_to">現正前往%s,請稍後..</string>
@@ -43,9 +43,23 @@
     <string name="web_toast">請同意憑證,方可使用此功能</string>
     <string name="yes">是</string>
     <string name="no">否</string>
-    
+
+    <!--web activity-->
+    <string name="web_tool_box_refresh">重新整理</string>
+    <string name="web_tool_box_copy">複製連結</string>
+    <string name="web_tool_box_share">分享連結</string>
+    <string name="web_tool_box_open_to">以其他應用開啟</string>
+    <string name="web_tool_box_close">關閉網頁</string>
+    <string name="web_tool_toast_copy">連結已複製</string>
+    <string name="web_sharing_text">%1$s | %2$s</string>
 
 
+
+
+    <string name="dialog_message_goto_setting">是否前往開啟權限？</string>
+    <string name="dialog_go">前往</string>
+    <string name="toast_permission_refuse">拒絕權限要求,將無法使用此功能。</string>
+    <string name="file_name">%s.jpg</string>
 
     <!--youtube api key-->
     <string name="youtube_key">AIzaSyBrQcnH8imWgxHT_aEXhBFveXzz_6924Ps</string>

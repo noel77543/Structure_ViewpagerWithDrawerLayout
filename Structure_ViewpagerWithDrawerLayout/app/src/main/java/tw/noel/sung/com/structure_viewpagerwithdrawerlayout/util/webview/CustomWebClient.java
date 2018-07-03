@@ -17,12 +17,12 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.dialog.LoadingD
 /**
  * Created by noel on 2018/6/19.
  */
-public class WebClient extends WebViewClient {
+public class CustomWebClient extends WebViewClient {
 
     private Context context;
     private LoadingDialog loadingDialog;
 
-    public WebClient(Context context, String loadingMessage) {
+    public CustomWebClient(Context context, String loadingMessage) {
         this.context = context;
         loadingDialog = new LoadingDialog(context);
         loadingDialog.setLoadingMessage(loadingMessage);

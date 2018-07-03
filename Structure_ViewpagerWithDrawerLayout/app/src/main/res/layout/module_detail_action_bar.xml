@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/action_bar_height"
@@ -11,16 +11,31 @@
         android:id="@+id/button_back"
         android:layout_width="@dimen/action_bar_height"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_margin="5dp"
         android:background="@drawable/selector_detail_back_button"
         android:contentDescription="@string/app_name" />
 
     <TextView
-        android:id="@+id/text_view"
+        android:id="@+id/text_view_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginEnd="55dp"
+        android:layout_toEndOf="@+id/button_back"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
-</LinearLayout>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/image_view_tool"
+        android:layout_width="@dimen/action_bar_height"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="0dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/selector_tools_box" />
+</RelativeLayout>

@@ -57,7 +57,7 @@ public class CustomWebView extends WebView  {
      *                 todo  step1:
      */
     public void setLoadingMessage(String pageName) {
-        setWebViewClient(new WebClient(context, String.format(context.getString(R.string.web_loading_message_go_to), pageName)));
+        setWebViewClient(new CustomWebClient(context, String.format(context.getString(R.string.web_loading_message_go_to), pageName)));
     }
     //---------
     /**
