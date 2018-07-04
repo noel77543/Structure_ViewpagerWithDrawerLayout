@@ -5,11 +5,11 @@
     android:orientation="vertical">
 
 
-    <SurfaceView
+    <tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.surfaceview.CustomSurfaceView
         android:id="@+id/surface_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
 
     <Button
@@ -17,6 +17,7 @@
         style="?attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/photo_detail_take_picture" />
 
 

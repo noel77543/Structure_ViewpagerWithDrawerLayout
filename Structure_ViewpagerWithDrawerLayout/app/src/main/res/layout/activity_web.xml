@@ -7,6 +7,12 @@
 
     <include layout="@layout/module_detail_action_bar" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
     <tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.webview.CustomWebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"

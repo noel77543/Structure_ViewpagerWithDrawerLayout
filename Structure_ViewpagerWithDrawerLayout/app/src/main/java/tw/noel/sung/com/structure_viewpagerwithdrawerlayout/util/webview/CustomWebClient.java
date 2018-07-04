@@ -22,10 +22,16 @@ public class CustomWebClient extends WebViewClient {
     private Context context;
     private LoadingDialog loadingDialog;
 
-    public CustomWebClient(Context context, String loadingMessage) {
+    public CustomWebClient(Context context) {
         this.context = context;
         loadingDialog = new LoadingDialog(context);
+    }
+
+    //--------------
+
+    public void setLoadingMessage( String loadingMessage){
         loadingDialog.setLoadingMessage(loadingMessage);
+
     }
 
 

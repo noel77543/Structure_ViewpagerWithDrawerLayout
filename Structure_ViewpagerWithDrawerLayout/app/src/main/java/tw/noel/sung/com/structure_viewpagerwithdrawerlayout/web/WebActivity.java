@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +21,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.toolbox.ToolBoxPopupWindow;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.webview.CustomWebChromeClient;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.webview.CustomWebClient;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.webview.CustomWebView;
 
-public class WebActivity extends FragmentActivity implements ToolBoxPopupWindow.OnToolBoxSelectListener {
+public class WebActivity extends FragmentActivity implements ToolBoxPopupWindow.OnToolBoxSelectListener, CustomWebView.OnProgressChangeListener {
 
     @BindView(R.id.image_view_tool)
     ImageView imageViewTool;
@@ -31,7 +35,8 @@ public class WebActivity extends FragmentActivity implements ToolBoxPopupWindow.
     TextView textViewTitle;
     @BindView(R.id.web_view)
     CustomWebView webView;
-
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
 
     private ToolBoxPopupWindow toolBoxPopupWindow;
     private String url;
@@ -58,10 +63,26 @@ public class WebActivity extends FragmentActivity implements ToolBoxPopupWindow.
         toolBoxPopupWindow.setOnToolBoxSelectedListener(this);
         imageViewTool.setVisibility(View.VISIBLE);
         textViewTitle.setText(page);
+
+        webView.setOnProgressChangeListener(this);
         webView.setLoadingMessage(page);
         webView.open(url);
     }
 
+    //-------------
+
+    /***
+     *  當進度更新
+     * @param newProgress
+     */
+    @Override
+    public void onProgressChanged(final int newProgress) {
+        if (newProgress >= 100) {
+            progressBar.setVisibility(View.GONE);
+        } else {
+            progressBar.setProgress(newProgress);
+        }
+    }
     //----------
 
     @OnClick({R.id.button_back, R.id.image_view_tool})
@@ -69,7 +90,6 @@ public class WebActivity extends FragmentActivity implements ToolBoxPopupWindow.
         switch (view.getId()) {
             case R.id.button_back:
                 back();
-
                 break;
             case R.id.image_view_tool:
                 toolBoxPopupWindow.showAtLocation(imageViewTool, Gravity.TOP | Gravity.END, 0, 0);
@@ -140,4 +160,5 @@ public class WebActivity extends FragmentActivity implements ToolBoxPopupWindow.
                 break;
         }
     }
+
 }

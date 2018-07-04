@@ -13,9 +13,13 @@ import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
  * Created by noel on 2018/6/19.
  */
 
-public class CustomWebView extends WebView  {
+public class CustomWebView extends WebView implements CustomWebChromeClient.OnProgressChangeListener {
     private Context context;
-    protected WebSettings webSettings;
+    private WebSettings webSettings;
+    private CustomWebClient webClient;
+    private CustomWebChromeClient webChromeClient;
+    private OnProgressChangeListener onProgressChangeListener;
+
 
     public CustomWebView(Context context) {
         super(context);
@@ -39,6 +43,12 @@ public class CustomWebView extends WebView  {
 
     //----------
     private void init() {
+        webClient = new CustomWebClient(context);
+        webChromeClient = new CustomWebChromeClient();
+        webChromeClient.setOnProgressChangeListener(this);
+        setWebChromeClient(webChromeClient);
+        setWebViewClient(webClient);
+
         webSettings = getSettings();
         webSettings.setDomStorageEnabled(true);
         webSettings.setAllowFileAccess(true);
@@ -49,17 +59,36 @@ public class CustomWebView extends WebView  {
         webSettings.setBuiltInZoomControls(false);
 
     }
+
+    //---------
+    @Override
+    public void onProgressChanged(int newProgress) {
+        onProgressChangeListener.onProgressChanged(newProgress);
+    }
+    //---------
+
+    public interface OnProgressChangeListener {
+        void onProgressChanged(int newProgress);
+    }
+
+    public void setOnProgressChangeListener(OnProgressChangeListener onProgressChangeListener) {
+        this.onProgressChangeListener = onProgressChangeListener;
+    }
+
+
     //---------
 
     /**
      * 載入訊息
+     *
      * @param pageName 前往的頁面名稱
      *                 todo  step1:
      */
     public void setLoadingMessage(String pageName) {
-        setWebViewClient(new CustomWebClient(context, String.format(context.getString(R.string.web_loading_message_go_to), pageName)));
+        webClient.setLoadingMessage(String.format(context.getString(R.string.web_loading_message_go_to), pageName));
     }
     //---------
+
     /**
      * load url
      * todo  step2:
@@ -67,4 +96,5 @@ public class CustomWebView extends WebView  {
     public void open(String url) {
         loadUrl(url);
     }
+
 }
