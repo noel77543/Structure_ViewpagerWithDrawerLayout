@@ -21,4 +21,6 @@
     <color name="player_cover_center">#f4161616</color>
 
 
+    <!--NaughtyPlayer-->
+    <color name="naughty_controller_bg">#be000000</color>
 </resources>
