@@ -79,7 +79,6 @@ public class LiveFragment extends BasicFragment implements LiveAdapter.OnPlayBut
                     View item = linearLayoutManager.findViewByPosition(playingItemIndex);
                     if (item != null && isScrolledOver(dy, item)) {
                         releasePlayer();
-
                     }
                 }
             }

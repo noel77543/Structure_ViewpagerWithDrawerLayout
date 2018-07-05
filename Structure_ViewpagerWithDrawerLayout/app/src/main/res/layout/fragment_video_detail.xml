@@ -5,17 +5,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.player.NaughtyPlayer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <VideoView
         android:id="@+id/video_view"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:visibility="gone" />
-
-    <tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.player.CustomPlayerView
-        android:layout_width="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="match_parent" />
+        android:visibility="gone"
+        android:layout_margin="10dp" />
 
 </LinearLayout>

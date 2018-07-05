@@ -2,10 +2,28 @@ package tw.noel.sung.com.structure_viewpagerwithdrawerlayout.detail.video;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.MediaController;
 import android.widget.VideoView;
+
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,12 +72,8 @@ public class VideoDetailFragment extends BasicDetailFragment {
     private void init() {
 
         videoView.setVideoURI(Uri.parse(ConnectInfo.URL_HTTP_LIVE_STREAM));
-        videoView.setMinimumHeight(300);
-        videoView.setMinimumWidth(300);
-
-        //mvdView.requestFocus();
-//        videoView.start();
-        videoView.pause();
+        videoView.setMediaController(new MediaController(activity));
+        videoView.start();
     }
 
 }
