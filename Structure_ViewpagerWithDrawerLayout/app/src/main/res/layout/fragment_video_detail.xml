@@ -6,15 +6,17 @@
 
 
     <tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.player.NaughtyPlayerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/naughty_player_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center" />
 
     <VideoView
         android:id="@+id/video_view"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
-        android:visibility="gone"
-        android:layout_margin="10dp" />
+        android:layout_margin="10dp"
+        android:visibility="gone" />
 
 </LinearLayout>

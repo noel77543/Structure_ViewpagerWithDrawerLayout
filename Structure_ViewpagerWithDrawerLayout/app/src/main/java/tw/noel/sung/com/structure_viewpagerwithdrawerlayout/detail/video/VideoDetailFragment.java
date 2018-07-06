@@ -30,6 +30,8 @@ import butterknife.ButterKnife;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.R;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.basic.BasicDetailFragment;
 import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.connect.ConnectInfo;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.player.NaughtyPlayer;
+import tw.noel.sung.com.structure_viewpagerwithdrawerlayout.util.player.NaughtyPlayerView;
 
 /**
  * Created by noel on 2018/6/30.
@@ -39,6 +41,8 @@ public class VideoDetailFragment extends BasicDetailFragment {
     private View view;
     @BindView(R.id.video_view)
     VideoView videoView;
+    @BindView(R.id.naughty_player_view)
+    NaughtyPlayerView naughtyPlayerView;
 
     //-----------
     @Override
@@ -70,10 +74,6 @@ public class VideoDetailFragment extends BasicDetailFragment {
      *  初始化
      */
     private void init() {
-
-        videoView.setVideoURI(Uri.parse(ConnectInfo.URL_HTTP_LIVE_STREAM));
-        videoView.setMediaController(new MediaController(activity));
-        videoView.start();
+        naughtyPlayerView.startVideoWithUrlString(ConnectInfo.URL_HTTP_LIVE_STREAM);
     }
-
 }
